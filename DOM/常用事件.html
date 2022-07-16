@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用事件</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="username" value="请输入名字">
+
+    <select name="" id="sex">
+        <option value="男">男</option>
+        <option value="女">女</option>
+    </select>
+
+    <input type="text" id="search" value="">
+
+    <div id="div1">12345</div>
+
+    <script>
+        // onfocus onblur
+        var oInput = document.getElementById('username');
+        oInput.onfocus = function () {
+            if(this.value == '请输入名字'){
+                this.value = '';
+            }
+        }
+        oInput.onblur = function(){
+            if(this.value == ''){
+                this.value = '请输入名字';
+            }
+        }
+
+        // onchange
+        var oSex = document.getElementById('sex');
+        oSex.onchange = function(){}
+
+        // onkeydown onkeyup
+        var oSearch = document.getElementById('search');
+        oSearch.onkeydown = function(){}
+        oSearch.onkeyup = function(){}
+
+        var oDiv1 = document.getElementById('div1');
+        // 鼠标滑入
+        oDiv1.onmouseover = function(){}
+        // 鼠标滑出
+        oDiv1.onmouseout = function(){}
+        // 鼠标移动
+        oDiv1.onmousemove = function(){}
+        // 鼠标按下
+        oDiv1.onmousedown = function(){}
+    </script>
+</body>
+</html>

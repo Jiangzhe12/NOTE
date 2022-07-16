@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择器</title>
+</head>
+<body>
+    <div id="div1">div1</div>
+    <ul id="ul1">
+        <li>1</li>
+        <li class="blue">2</li>
+        <li class="blue">3</li>
+    </ul>
+    <ul>
+        <li>11</li>
+        <li>22</li>
+        <li>33</li>
+    </ul>
+    <input type="text" name="age">
+    <script>
+        // id
+        var oDiv1 = document.getElementById('div1');
+
+        // class
+        var aLi1 = document.getElementsByClassName('blue');
+
+        // tag
+        var oUl1 = document.getElementById('ul1')
+        var aLi2 = oUl1.getElementsByTagName('li');
+
+        // name 
+        var oAge = document.getElementsByName('age')[0];   
+
+        // querySelectorAll(css选择器)
+        var aLi3 = document.querySelectorAll('#ul1 li');
+
+        // querySelector(css选择器)
+        var aLi4 = document.querySelector('#ul1 li');   
+    </script>
+    
+</body>
+</html>

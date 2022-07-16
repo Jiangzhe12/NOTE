@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用样式</title>
+
+    <style>
+        body{
+            width: 1000px;
+            height: 1000px;
+            border: solid;
+        }
+        /* 颜色 */
+
+        /* 固定单词 */
+        h1{
+            color: aqua;
+        }
+
+        /* rgb/rgba */
+        h1{
+            color: rgb(255, 0,0);
+            /* 0也要把%写上 */
+            color: rgb(100%, 0%, 0%);
+            color: rgba(255, 0, 0, 0.5);
+        }
+
+        /* 16进制【HEX】 */
+        h1{
+            color: #f00;
+        }
+
+        /* 尺寸 */
+        #box{
+            width: 50%;
+            height: 50%;
+            background: #f00;
+        }
+
+        #box div{
+            width: 50%;
+            height: 50%;
+            /* em是根据父元素的字体大小  1em = 字体尺寸 */
+            height: 10em;
+            /* rem是根据根元素的字体大小 */
+            height: 10rem;
+            /* vm/vh：根据可视窗口  */
+            /* vmin/vmax ：可视窗口里的那个最小值/最大值     */
+            height: 10vw;
+            /* calc（）中单位可以混用 */
+            height: calc(50% + 10em);
+            background: gold;
+        }
+
+        /* 背景 */
+        #box1{
+            width: 200px;
+            height: 200px;
+            border: red solid 2px;
+        }
+
+        .bg{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            /* 背景图片 */
+            background-image: none;
+            /* 图片填充 */
+            background-repeat: no-repeat;
+            /* 背景会默认占据内边距 */
+            padding: 100px;
+            /* 背景不会占据外边距 */
+            margin: 100px;
+            background-position: 100px 100px;
+            background-position: center center;
+
+            /* 溢出部分添加滚动条 */
+            overflow: scroll;
+            /* 元素滚动，图片不滚动 */
+            background-attachment: scroll;
+            /* 元素滚动，图片也滚动 */
+            background-attachment: local;
+            /* 起始位置是相对于浏览器窗口（可视窗口）左上角 */
+            background-attachment: fixed;
+
+
+            /* 规定图片的绘制区域 */
+            background-origin: padding-box;
+            background-origin: border-box;
+            background-origin: content-box;
+            background: red;
+
+            /* coutent向外开始裁剪 */
+            background-clip: content-box;
+
+            /* 背景图片的大小 */
+            background-size: 30% 30%;
+
+            /* 将背景图片等比缩放到完全覆盖容器，背景图片有可能超出容器 */
+            background-size: cover;
+            /* 将背景图片等比缩放到宽度或高度与容器的宽度或高度相等，背景图片始终包含在容器内 */
+            background-size: contain;
+        }
+
+        /* 字体 */
+        #box2{
+            background: bisque;
+            size: 50px;
+            color: aqua;
+            /* 水平方向 */
+            text-align: center;
+            /* 行距 */
+            line-height: 2;
+            /* 文字中间穿一条线 */
+            text-decoration: #f00 line-through;
+            /* 字体 */
+            font-style: italic;
+            font-weight: 100;
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+
+            /* 透明度 */
+            opacity: 0.5;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>越努力，越幸运</h1>
+    <div id="box">
+        <div></div>
+    </div>
+    <div id="box1">
+        <div class="bg">越努力，越幸运</div>
+    </div>
+    
+    <div id="box2">越努力，越幸运</div>
+</body>
+</html>

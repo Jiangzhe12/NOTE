@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验4</title>
+    <style>
+        .fade-enter,.fade-leave-to{
+            opacity:0;
+        }
+        .fade-enter-active,.fade-leave-active{
+            transition: all 1s ease;
+        }
+        .container{
+            position: relative;
+            background-color: aliceblue;
+            text-align: center;
+        }
+        .btn{
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%,0);
+            bottom: -10px;
+        }
+        .btn li{
+            list-style: none;
+            float: left;
+        }
+        .btn li a {
+            display: block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            border-radius: 50%;
+            margin: 5px;
+            color: white;
+            font-weight: bolder;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: all 0.6s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <transition name="fade" mode="out-in">
+                <img :key="current" :src="images[current]" width="700" height="500">
+            </transition>
+            <ul class="btn">
+                <li v-for="n in images.length">
+                    <a href="#" :style="{'background-color' : (n - 1) == current ?'hotpink' : '#cccccc'}" @mouseover="change(n - 1)">{{n}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                images:[
+                    './1.jpeg',
+                    './2.jpeg',
+                    './3.jpeg',
+                    './4.jpeg',
+                    './5.jpeg',
+                ],
+                current :0
+            },
+            methods: {
+                change:function(n){
+                    this.current = n;
+                },
+                next:function(){
+                    this.current = (this.current + 1) % this.images.length;
+                }
+            },
+            mounted () {
+                setInterval(this.next,5000);
+            }
+        })
+    </script>
+</body>
+</html>

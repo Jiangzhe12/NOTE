@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验5</title>
+    <style>
+        #app {
+            width: 500px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+        .container {
+            position : relative;
+            margin: 0 auto;
+        }
+        .search-bar input {
+            border: 2px solid #7BA7AB;
+            border-radius: 5px;
+            color: #9E9C9C;
+            width: 460px;
+            height: 36px;
+            padding-left: 15px;
+            padding-right: 20px;
+        }
+        .search-bar button {
+            top: 0;
+            right: 0;
+            background: #7BA7AB;
+            border-radius: 0 5px 5px 0;
+            color:#F9F0DA;
+            width: 70px;
+            height: 42px;
+            position: absolute;
+            border: none;
+            cursor: pointer;
+        }
+        .result {
+            color: #7BA7AB;
+            text-align: left;
+            text-align: center;
+            width: 530px;
+        }
+        .details {
+            width : 250px;
+            text-align: left;
+            margin : auto;
+        }
+</style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" placeholder="请输入要查询的地址..." V-model="city_text">
+                <button @click="getweather">搜索</button>
+            </div>
+                <div class="result">
+                    <h1>{{city}} {{tem}}&#176;</h1>
+                    <img src="./天气.png">
+                    <div class="details">
+                    <h3>日期: {{date}} {{week}}</h3>
+                    <h3>温度: {{tem_night}}~{{tem_day}}</h3>
+                    <h3>风向:{{win}}</h3>
+                    <h3>风力:{{win_speed}}</h3>
+                    <h3>风速:{{win_meter}}</h3>
+                    <h3>湿度: {{humidity}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                city_text:'哈尔滨',
+                city:'',
+                date: '',
+                week: '',
+                wea:'晴',
+                wea_img: 'qing',
+                tem: '',
+                tem_day: '',
+                tem_night: '',
+                win:'',
+                win_speed: '',
+                win_meter: '',
+                air:'',
+                pressure:'',
+                humidity:'',
+
+            },
+            methods: {
+                getweather: function() {
+                    _this = this;
+                    axios ({
+                        url: 'https://www.yiketianqi.com/free/day',
+                        method: 'get',
+                        params: {
+                            appid:'39738797',
+                            appsecret:'se12mCua',
+                            vue: 1,
+                            unescape: 1,
+                            city: _this.city_text
+                        }
+                    })
+                    .then ( function( response){
+                        var data = response. data;
+                        _this.city = data.city;
+                        _this.date = data.date;
+                        _this.week = data.week;
+                        _this.wea = data.wea;
+                        _this.wea_img = data.wea_img;
+                        _this.tem = data.tem ;
+                        _this.tem_day = data.tem_day ;
+                        _this.tem_night = data.tem_night;
+                        _this.win = data.win ;
+                        _this.win_speed = data.win_speed;
+                        _this.win_meter = data.win_meter;
+                        _this.air = data.air;
+                        _this.pressure = data.pressure;
+                        _this.humidity = data.humidity;
+                    })
+                    .catch ( function ( error){
+                        console.log (error.message ) ;
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

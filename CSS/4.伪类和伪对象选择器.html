@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪类和伪对象选择器</title>
+
+    <style>
+        #box{
+            width: 500px;
+            height: 500px;
+            border: solid;
+        }
+
+        /* 伪类选择器 */
+        #box li:hover{
+            background-color: antiquewhite;
+        }
+
+        /* box后代中每一代的最后一个 */
+        #box :last-child{
+            border-bottom: 2px solid black;
+        }
+
+        /* box后代中每一代中li的最后一个 */
+        #box li:last-child{
+            border-bottom: 2px solid black;
+        }
+
+        /* box中每一代的第二个孩子 */
+        #box :nth-child(2){
+            border-bottom: 2px solid black;
+        }
+
+        /* box中每一代的第二个p */
+        #box p:nth-child(2){
+            border-bottom: 2px solid black;
+        }
+
+        /* box中每一代中每一种标签的第一个 */
+        #box :nth-of-type(1){
+            border-bottom: 2px solid black;
+        }
+
+        /* box中每一代中p标签的第二个 */
+        #box p:nth-of-type(2){
+            border-bottom: 2px solid black;
+        }
+
+        /* 伪对象（元素）选择器 */
+        #box p::after{
+            content: '❤';
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>越努力，越幸运</p>
+        <ul>
+            <li>1
+                <ul>
+                    <li>1.1</li>
+                    <li>1.2</li>
+                </ul>
+            </li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <p>p1</p>
+        <p>p2</p>
+        <h1>h1</h1>
+        <h2>h2</h2>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三列布局</title>
+    <style>
+        #container{
+            height: 600px;
+            border: solid 2px red;
+            display: flex;
+        }
+
+        /* 用浮动的方式 */
+        #item1{
+            width: 200px;
+            height: 100%;
+            background-color: blue;
+            float: left;
+        }
+
+        #item2{
+            height: 100%;
+            margin:0 210px;
+            background-color: aqua;
+            
+        }
+        #item3{
+            width: 200px;
+            height: 100%;
+            background-color: yellow;
+            float:right;
+        }
+
+
+
+        /* 弹性盒模型的方式 */
+        #item1{
+            width: 200px;
+            background-color: blue;
+        }
+
+        #item2{
+            flex: 1;
+            background-color: aqua;
+            
+        }
+        #item3{
+            width: 200px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- 浮动的方式 -->
+    <div id="container">
+        <div id="item1"></div>
+        <div id="item3"></div>
+        <div id="item2"></div>
+    </div>
+    
+    <!-- 弹性盒模型的方式 -->
+    <div id="container">
+        <div id="item1"></div>
+        <div id="item2"></div>
+        <div id="item3"></div>
+    </div>
+</body>
+</html>

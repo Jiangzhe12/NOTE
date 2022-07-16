@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录界面</title>
+    <style>
+        div{
+            height: 50px;
+        }
+        body{
+            background-color: #000000BF;
+        }
+    </style>
+</head>
+<body>
+    <!-- 表单标签  action：属性定义提交表单时要执行的操作 method：属性指定提交表单数据时要使用的 HTTP 方法-->
+    <form action="" method="GET">
+
+        <div>
+            <!-- 对input标签的标记 -->
+            <label for="name">姓名:</label>
+            <input type="text" name="name" id="name">
+        </div>
+
+        <div>
+            <label for="pwd">密码:</label>
+            <input type="password" name="pwd" id="pwd">
+        </div>
+
+        <!-- 单元框 -->
+        <div>
+            <label for="sex">性别:</label>
+            男<input type="radio" name="sex" value="man" id="sex">
+            女<input type="radio" name="sex" value="male" id="sex">
+        </div>
+
+        <!-- 复选框 -->
+        <div>
+            <label for="hobby">爱好:</label>
+            吃饭<input type="checkbox" name="hobby" value="吃饭" id="hobby">
+            睡觉<input type="checkbox" name="hobby" value="睡觉" id="hobby">
+            打游戏<input type="checkbox" name="hobby" value="打游戏" id="hobby">
+        </div>
+
+        <!-- 文件元素 -->
+        <div>
+            <input type="file" name="file" id="file">
+        </div>
+
+        <!-- 下拉列表 -->
+        <div>
+            <label for="age">年龄:</label>
+            <select name="age" id="">
+                <option value="10岁以下">10岁以下</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+
+        <!-- 邮箱元素 -->
+        <div>
+            邮箱<input type="email" name="email" id="email">
+        </div>
+
+        <div>
+            <!-- 重置按钮 -->
+            <input type="reset" value="重置">
+            <!-- 登录按钮 -->
+            <input type="submit" value="登录">
+        </div>
+
+        <!-- 视频 -->
+        <video src=""></video>
+
+        <!-- 音频 -->
+        <audio src=""></audio>
+
+
+        <!-- 顶部 -->
+        <header></header>
+        <!-- 左侧栏 -->
+        <nav></nav>
+        <!-- 主文章 -->
+        <main>
+            <section>
+                <article></article>
+            </section>
+        </main>
+
+        <!-- 底部 -->
+        <footer></footer>
+
+
+        <!-- 内联表单 -->
+        <iframe src="" frameborder="0"></iframe>
+    </form>
+</body>
+</html>

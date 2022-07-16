@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+</head>
+<body>
+    <script>
+        // 对象的定义：Everything is Object!!!
+        // 研究对象主要是研究对象的属性和方法
+        // 创建对象有哪些方式？
+        // 1.使用new Object构造器
+        var o1 = new Object();
+        o1.name = 'list';
+        o1.age = 21;
+        o1.sayHello = function(){
+
+        };
+
+        // 2.适用对象直接量（字面量)
+        var o2 = {
+            name : 'wangwu',
+            age : 23,
+            sayHello:function(){
+
+            }
+        };
+
+
+        // 使用Object.create()
+        var o3 = Object.create(o1);
+        // o3从o1继承了属性和方法
+    </script>
+</body>
+</html>

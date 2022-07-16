@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验3</title>
+    <style>
+        .title {
+            display: inline-block;
+            width: 250px;
+            font-size: xx-large;
+        }
+
+        .film-item {
+            padding: 10px;
+            height: 30px;
+            width: 400px;
+            border-bottom: 1px dashed hotpink;
+        }
+
+        .film-item span {
+            padding: 0;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .ranking-span {
+            display: inline-block;
+            width: 30px;
+            text-align: center;
+        }
+
+        .star-span {
+            display: inline-block;
+            width: 200px;
+            text-align: right;
+        }
+
+        .name-sapn {
+            display: inline-block;
+            width: 150px;
+        }
+
+        .tab ul {
+            list-style: none;
+            display: inline-block;
+        }
+
+        .tab li {
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+            padding: 5px 10px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: hotpink;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <span class="title">电影排行</span>
+        <span class="tab">
+            <ul>
+                <li @click="currentFilms=hotFilms" :class="{active:currentFilms==hotFilms}">热播</li>
+                <li @click="currentFilms=classicFilms" :class="{active:currentFilms==classicFilms}">经典</li>
+            </ul>
+        </span>
+        <film-page :films=" currentFilms"></film-page>
+    </div>
+
+    <template id="film-item">
+        <div class="film-item">
+            <span class="ranking-span">{{ranking}}</span>
+            <span class="name-span">{{name}}</span>
+            <span class="star-span">{{star}}</span>
+        </div>
+    </template>
+
+    <template id="film-page">
+        <div>
+            <div v-for="(f,index) in films">
+                <film-item :ranking="index + 1" :name="f.name" :star="f.star"></film-item>
+            </div>
+        </div>
+    </template>
+
+    <script src="../vue.js"></script>
+    <script>
+        var filmItem = {
+            props: {
+                ranking: Number,
+                name: String,
+                star: String
+            },
+            template: '#film-item'
+        };
+        var filmPage = {
+            props: {
+                films: Array
+            },
+            template: '#film-page',
+            components: {
+                filmItem: filmItem
+            }
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                currentFilms: [],
+                hotFilms: [
+                    { name: '开过大典', star: '古月' },
+                    { name: '建军大业', star: '刘烨' },
+                    { name: '建党伟业', star: '任达华' },
+                    { name: '建国大业', star: '唐国强' },
+                ],
+                classicFilms: [
+                    { name: '冰山上的来客', star: '梁音' },
+                    { name: '405谋杀案', star: '仲星火' },
+                    { name: '林中谜案', star: '李丁' },
+                    { name: 'R4之谜', star: '张力维' },
+                ]
+            },
+            components: {
+                filmPage: filmPage,
+            },
+            mounted() {
+                this.currentFilms = this.hotFilms;
+            }
+        })
+    </script>
+</body>
+
+</html>

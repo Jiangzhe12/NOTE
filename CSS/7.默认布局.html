@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>默认布局</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 默认布局 */
+        /* 块元素
+            1.每个块元素会在上一个元素下面另起一行
+            2.默认的一个块级元素的内容的宽度是其父元素的100%，高度由元素中的内容撑开
+        */
+        #box1{
+            background: red;
+        }
+
+        #box1 .classson{
+            background: yellow;
+            /* 块→行 */
+            display: inline;
+        }
+
+        /* 行元素
+            1.父级元素的宽度足够的话，行内元素会与文本内容同处一行，或其他行级元素同处一行，超出高度部分被移到下一行
+            2.行元素无法设置宽高，宽高与内容一致
+        */
+        #box2{
+            width: 200px;
+            background-color: wheat;
+        }
+
+        #box2 span{
+            background-color: antiquewhite;
+            border: rebeccapurple 1px solid;
+            /* 行→块 */
+            display: inline;
+        }
+
+        #box3{
+            width: 200px;
+            height: 200px;
+            border: 2px solid salmon;
+        }
+
+        #box3.item{
+            width: 50px;
+            height: 50px;
+            background-color: aquamarine;
+            /* 可以设置宽高的行级元素 */
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">越努力
+        <div class="classson">越幸运</div>
+    </div>
+
+    <div id="box2">
+        越努力，越幸运 越努力，越幸运 越努力，越幸运<span>111</span>
+    </div>
+    
+    <div id="box3" class="item"></div>
+    <div id="box3" class="item"></div>
+    <div id="box3" class="item"></div>
+    
+</body>
+</html>

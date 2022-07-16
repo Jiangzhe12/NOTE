@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            text-align: center;
+            font-size: xx-large;
+        }
+
+        .big-box{
+            width: 300px;
+            height: 400px;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+        }
+        .box{
+            margin: 10px auto;
+        }
+        .box label{
+            width: 100px;
+            float: left;
+            text-align: right;
+        }
+
+        .center-box{
+            text-align: center;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <form @submit="doSubmit">
+            <div class="big-box">
+                <div class="title">用户注册</div>
+                <div class="box">
+                    <label>用户名：</label>
+                    <input type="text" v-model="username">
+                </div>
+                <div class="box">
+                    <label>密码：</label>
+                    <input type="password" v-model="password">
+                </div>
+                <div class="box">
+                    <label>出生日期：</label>
+                    <input type="date" v-model="birthDate">
+                </div>
+                <div class="box">
+                    <label>籍贯：</label>
+                    <select v-model="selectedProvince">
+                        <option value="disabled">请选择</option>
+                        <option v-for="p in provinces" :value="p">{{p}}</option>
+                    </select>
+                    <select v-model="selectedDistrict">
+                        <option value="disabled">请选择：</option>
+                        <option v-for="d in filledDistricts" :value="d.name">{{d.name}}</option>
+                    </select>
+                </div>
+                <div class="center-box">
+                    <input type="checkbox" v-model="agree">
+                    <label>同意用户协议</label>
+                </div>
+                <div class="center-box">
+                    <input type="submit" value="注册" :disabled="!agree">
+                    <input type="reset" value="重置">
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="./vue.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data: {
+                username:'',
+                password:'',
+                birthDate:'',
+                selectedProvince:'',
+                selectedDistrict:'',
+                agree:false,
+                submitDisabled:false,
+
+                provinces:[
+                    '黑龙江','辽宁','吉林'
+                ],
+
+                districts:[
+                    {province:'黑龙江',name:'哈尔滨'},
+                    {province:'黑龙江',name:'七台河'},
+                    {province:'黑龙江',name:'牡丹江'},
+                    {province:'吉林',name:'长春'},
+                    {province:'吉林',name:'吉林'},
+                    {province:'辽宁',name:'沈阳'},
+                    {province:'辽宁',name:'大连'},
+                ],
+            },
+
+            computed: {
+                filledDistricts:function(){
+                    _this = this;
+                    return this.districts.filter(function(c){
+                        return c.province == _this.selectedProvince;
+                    });
+                }
+            },
+
+            methods: {
+                doSubmit:function(){
+                    alert('您的注册信息如下：\n用户名：' + this.username + 
+                    '\n密码：' + this.password + '\n出生日期：' + 
+                    this.birthDate + '\n籍贯：' + this.selectedProvince + 
+                    '省' + this.selectedDistrict + '地区');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

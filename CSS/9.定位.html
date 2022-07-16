@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位</title>
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #outer{
+            width: 500px;
+            height: 500px;
+            background-color: darkgrey;
+            margin-top: 50px;
+            margin-left: 100px; 
+
+            /* 四个边距都是50px */
+            margin: 50px;
+            /* 上下边距是10px 左右边距是20px */
+            margin: 10px 20px;
+            /* 上边距是50px 左右边距是60px 下边距是70px */
+            margin: 50px 60px 70px ;
+            /* 上边距50px 右边距60px 下边距70px 左边距80px */
+            margin: 50px 60px 70px 80px;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+
+        #box1{
+            background-color: antiquewhite;
+        }
+
+        #box2{
+            background-color: aquamarine;
+            /* relative:
+                1.位置相对于自身原始位置计算
+                2.不脱离文档流（原来占的位置不释放）
+                3.可能会覆盖其他元素
+            */
+            position: relative;
+            top: 50px;
+            left: 50px;
+
+
+            /* absolute
+                1.脱离文档流（原来占的位置会被释放）
+                2.位置计算是相对于最近已定位父元素
+            */
+            position: absolute;
+            top: 50px;
+            left: 50px;
+
+
+
+            /* fixed:
+                1.计算位置相对于浏览器窗口
+                2.脱离文档流（原来占的位置会被释放）
+            */
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+
+
+            /* sticky:(relative + fixed) 
+                1.计算位置相对于浏览器窗口
+            */
+            position: sticky;
+            top: -10px;
+
+        }
+
+        #box3{
+            background-color: rgb(200, 196, 255);
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div class="box" id="box1"></div>
+        <div class="box" id="box2"></div>
+        <div class="box" id="box3"></div>
+    </div>
+</body>
+</html>

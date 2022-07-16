@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验6</title>
+    <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        .form-signin .form-signin-heading,
+        .form-signin .message {
+            margin-bottom: 10px;
+        }
+        .form-signin .message {
+            font-weight: 400;
+        }
+        .form-signin .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .form-signin input {
+            margin-bottom: 5px;
+        }
+</style>
+
+        
+</head>
+
+<body>
+    <div id="app">
+        <template id="register">
+            <div class="container">
+                <form class="form-signin">
+                    <h2 class="form-signin-heading">注册账号</h2>
+                    <input type="text" class="form-control" placeholder="输入账号" v-model="inputName">
+                    <input type="password" class="form-control" placeholder="输入密码">
+                    <input type="password" class="form-control" placeholder="再次输入密码">
+                    <div class="message">
+                        已经有账号?现在<router-link :to="inputName == '' ? '/login' : '/login?name=' + inputName">登录</router-link>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+                </form>
+            </div>
+        </template>
+    </div>
+    
+    
+    <div id="app">
+        <template id="register">
+            <div class="container">
+                <form class="form-signin">
+                    <h2 class="form-signin-heading">注册账号</h2>
+                    <input type="text" class="form-control" placeholder="输入账号" v-model="inputName">
+                    <input type="password" class="form-control" placeholder="输入密码">
+                    <input type="password" class="form-control" placeholder="再次输入密码">
+                    <div class="message">
+                        已经有账号?现在<router-link :to="inputName == '' ? '/login' : '/login?name=' + inputName">登录</router-link>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+                </form>
+            </div>
+        </template>
+    </div>
+    
+
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="../vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.4/dist/vue-router.js"></script>
+
+    <script>
+        var login = {
+            template: '#login',
+            data:function(){
+                return {
+                    inputName: this.$route.query.name
+                };
+            }
+        };
+        var register = {
+            template: '#register',
+            data: function(){
+                return {
+                    inputName: ''
+                };
+            }
+        };
+        var router = new VueRouter({
+            routes: [
+                {path:'/login' , component: login},
+                {path:'/register', component: register}
+            ]
+        });
+
+        var vm = new Vue( {
+            el: '#app' ,
+            router: router
+        });
+
+
+    </script>
+        
+</body>
+
+</html>

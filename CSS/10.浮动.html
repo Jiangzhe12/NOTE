@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        #nav{
+            height: 50px;
+            overflow: hidden;
+        }
+
+        #nav li{
+            width: 120px;
+            height: 30px;
+            background: yellow;
+            text-align: center;
+            /* float:
+                1.脱离文档流（）
+            */
+            /* 父元素塌陷：
+                1.给父元素设置一个高度
+                2.给父元素设置overflow：hidden；
+                3.在子元素的最后添加一个空元素，给这个空元素设置clear：both；
+                4.用伪元素选择器给父元素后加一个空伪元素
+            */
+            float: left;
+            margin: 5px;
+            line-height: 30px;
+        }
+
+        #nav::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        #box{
+            height: 50px;
+            background-color: cadetblue;
+        }
+        .clearfix{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <ul id="nav">
+        <li><a href="">link1</a></li>
+        <li><a href="">link2</a></li>
+        <li><a href="">link3</a></li>
+        <div class="clearfix"></div>
+    </ul>
+    <div id="box"></div>
+</body>
+</html>

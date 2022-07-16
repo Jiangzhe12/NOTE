@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <label>姓名：</label>
+            <input type="text" v-model="name">
+            <label>性别：</label>
+            <select v-model="gender">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+            <label>出生日期：</label>
+            <input type="date" v-model="birthDate">
+        </div>
+        <div>
+            <label>电话：</label>
+            <input type="text" v-model="mobilePhone">
+            <label>公寓：</label>
+            <input type="text" v-model="dormitory">
+            <button @click="add">添加</button>
+        </div>
+        <div>
+            <label>搜索：</label>
+            <input type="text" v-model.trim="keywords">
+        </div>
+        <table>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>出生日期</th>
+                <th>电话</th>
+                <th>公寓</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="(s,index) in filteredStudents" :key="s.id">
+                <td>{{s.id}}</td>
+                <td>{{s.name}}</td>
+                <td>{{s.gender}}</td>
+                <td>{{s.birthDate}}</td>
+                <td>{{s.mobilePhone}}</td>
+                <td>{{s.dormitory}}</td>
+                <td><button @click="remove(index)">删除</button></td>
+            </tr>
+        </table>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                Students:[
+                    {id: 1,name:'jiangzhe',gender:'男',birthDate:'2001-10-25',mobilePhone:'131245325',dormitory:'7公寓727'},
+                    {id: 2,name:'zhangsan',gender:'男',birthDate:'2000-06-25',mobilePhone:'124535325',dormitory:'7公寓425'},
+                    {id: 3,name:'lisi',gender:'女',birthDate:'2010-12-05',mobilePhone:'134234225',dormitory:'7公寓563'},
+                    {id: 4,name:'wangwu',gender:'男',birthDate:'1999-04-15',mobilePhone:'553535325',dormitory:'4公寓437'},
+                ],
+                name:'',
+                gender:'男',
+                birthDate:'',
+                mobilePhone:'',
+                dormitory:'',
+                keywords:''
+            },
+
+            methods: {
+                add(){
+                    if(this.name == '' || this.gender == '' || this.birthDate == '' 
+                    || this.mobilePhone == '' || this.dormitory == ''){
+                        return;
+                    }
+
+                    var id = this.Students[this.Students.length - 1].id + 1;
+                    this.Students.push({id:id,name:this.name,gender:this.gender,
+                    birthDate:this.birthDate,mobilePhone:this.mobilePhone,dormitory:this.dormitory});
+                    this.name = '';
+                    this.gender = '男';
+                    this.birthDate = '';
+                    this.mobilePhone = '';
+                    this.dormitory = '';
+                },
+
+                remove(index){
+                    this.Students.splice(index,1);
+                },
+            },
+
+            computed: {
+                filteredStudents(){
+                    if(this.keywords == ''){
+                        return this.Students;
+                    }else{
+                        return this.Students.filter(item =>{
+                            return item.name.includes(this.keywords)
+                        })
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg" v-on:keyup="search">
+        <button @click="add">添加</button>
+        <ul>
+            <li v-for="(item,index) in showList" @click="change(item)" v-bind:class="{active:item.isActive}">
+                <span>{{item.content}}</span>
+                <button @click.stop="del(index)">删除</button>
+            </li>
+        </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                msg:'',
+                list:[
+                    {
+                        content:'111',
+                        isActive:false,
+                    },
+                    {
+                        content:'22222',
+                        isActive:false,
+                    }
+                ],
+                showList:[
+                    {
+                        content:'111',
+                        isActive:false,
+                    },
+                    {
+                        content:'22222',
+                        isActive:false,
+                    }
+                ],
+            },
+            methods:{
+                add(){
+                    this.list.push({
+                        content:this.msg,
+                        isActive:false
+                    });
+                    this.showList = [...this.list];
+                    this.msg ='';
+                },
+                change(e){
+                    e.isActive = !e.isActive;
+                },
+                del(index){
+                    this.list.splice(index,1);
+                    this.showList = [...this.list];
+                },
+                search(){
+                    this.showList = this.list.filter((obj,index) =>{
+                        return obj.content.includes(this.msg)
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

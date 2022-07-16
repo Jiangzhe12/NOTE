@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义对象</title>
+</head>
+<body>
+    <script>
+        function Person(name,idCard){
+            this.name = name;
+            this.idCard = idCard;
+        };
+
+        var person1 = new Person('lisi',"2141254");
+        var person2 = new Person('zhangsan',"153764865");
+
+        var library = {
+            libraryName = '学府书店',
+            address = '学府路'
+        };
+
+        function Book(name,ISBN){
+            this.bookName = name;
+            this.ISBN = ISBN; 
+        };
+
+        var book1 = new Book('大学英语','2145424');
+        var book2 = new Book('java','234235');
+
+        function Manger(){}
+        Manger.prototype.regist = function(person,book){
+            console.log('借书人:'+person.name + ",书名:"+book.bookName);
+        };
+
+        var manger1 = new Manger();
+        manger1.regist(person1,book1);
+        var manger2 = new Manger();
+        manger2.regist(person2,book2);
+    </script>
+</body>
+</html>
